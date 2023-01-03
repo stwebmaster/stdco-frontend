@@ -1,0 +1,16 @@
+@import "https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    label {
+        @apply block mb-1 text-sm text-slate-800;
+    }
+}
+
+body, html, #app {
+    font-family: 'Nunito', sans-serif;
+    @apply min-h-screen;
+}
