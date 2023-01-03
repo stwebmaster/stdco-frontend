@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white min-h-screen">
     <div class="flex items-center">
-      <div class="bg-auth flex-1 min-h-screen"></div>
+      <div class="hidden md:block bg-auth flex-1 min-h-screen"></div>
       <div class="w-full max-w-xl">
         <slot></slot>
       </div>

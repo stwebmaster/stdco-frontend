@@ -26,7 +26,7 @@ const search = () => {
 </script>
 
 <template>
-  <div class="max-w-screen-xl mx-auto pt-48">
+  <div class="mx-auto max-w-screen-xl pt-48">
     <Vue3Lottie :animation-data="ContainerShip" :width="200" class="-mb-10" />
 
     <div class="mt-14 text-center">
@@ -35,7 +35,7 @@ const search = () => {
       </div>
       <input
         type="text"
-        class="w-1/2 px-5 py-4 text-slate-700 rounded border-0 shadow text-lg placeholder-slate-300 transition hover:shadow-lg focus:ring-2 focus:ring-brand-blue"
+        class="mx-5 w-4/5 rounded border-0 px-5 py-4 text-lg text-slate-700 placeholder-slate-300 shadow transition hover:shadow-lg focus:ring-2 focus:ring-brand-blue md:mx-0 md:w-1/2"
         placeholder="Job Number"
         v-model="keyword"
         @keyup.enter="search"
@@ -44,7 +44,7 @@ const search = () => {
       <div class="mt-8">
         <button
           @click="search"
-          class="px-5 py-3 rounded bg-brand-blue text-white text-sm shadow-md uppercase"
+          class="rounded bg-brand-blue px-5 py-3 text-sm uppercase text-white shadow-md"
         >
           Get Report
         </button>

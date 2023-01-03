@@ -4,12 +4,16 @@ import {
   HomeIcon,
   LockClosedIcon,
   UserIcon,
+  XMarkIcon,
+  Bars3Icon,
 } from "@heroicons/vue/24/solid";
 import { useAuthStore } from "@/stores/auth";
 import { useRouter } from "vue-router";
+import { ref } from "vue";
 
 const auth = useAuthStore();
 const router = useRouter();
+const showMenu = ref(false);
 
 const logout = async () => {
   const result = confirm("Are you sure you wanrt to log out?");
@@ -17,6 +21,10 @@ const logout = async () => {
     await auth.logout();
     router.push({ name: "login" });
   }
+};
+
+const toggleMenu = () => {
+  showMenu.value = !showMenu.value;
 };
 </script>
 
@@ -27,9 +35,22 @@ const logout = async () => {
     <div
       class="mx-auto flex w-full flex-wrap items-center justify-between px-0 md:min-h-full md:flex-col md:flex-nowrap md:items-stretch"
     >
+      <button class="rounded-md border p-1 md:hidden" @click="showMenu = true">
+        <Bars3Icon class="w-8 text-slate-600" />
+      </button>
       <div
-        class="absolute top-0 left-0 right-0 z-40 hidden h-auto flex-1 items-center overflow-y-auto overflow-x-hidden rounded shadow md:relative md:mt-4 md:flex md:flex-col md:items-stretch md:opacity-100 md:shadow-none"
+        :class="{ block: showMenu, hidden: !showMenu }"
+        class="absolute top-0 left-0 right-0 z-40 mx-2 h-auto flex-1 items-center overflow-y-auto overflow-x-hidden rounded bg-white p-5 shadow md:relative md:mx-0 md:mt-4 md:flex md:flex-col md:items-stretch md:p-0 md:opacity-100 md:shadow-none"
       >
+        <div class="md:hidden">
+          <button
+            class="rounded-md border p-1 md:hidden"
+            @click="showMenu = false"
+          >
+            <XMarkIcon class="w-8 text-slate-600" />
+          </button>
+        </div>
+
         <img src="@/assets/logo.svg" class="mx-auto w-24" />
 
         <div

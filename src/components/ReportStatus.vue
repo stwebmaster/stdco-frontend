@@ -21,17 +21,21 @@ status.value = statusLabel[props.status];
 </script>
 
 <template>
-  <div class="flex h-20 items-center border-b border-t">
+  <div class="flex h-20 items-center border-b border-t px-3 md:px-0">
     <div class="relative flex max-h-full w-1/4 items-center">
       <div class="flex-1">
         <div class="flex justify-center">
-          <div class="font-bold text-brand-blue">Waiting for Plan</div>
-          <CheckIcon class="ml-2 w-5 text-brand-blue" />
+          <div
+            class="text-center text-xs md:text-base font-bold text-brand-blue md:text-left"
+          >
+            Waiting for Plan
+          </div>
+          <CheckIcon class="ml-2 hidden w-5 text-brand-blue md:block" />
         </div>
       </div>
       <img
         src="@/assets/img/right-chevron.webp"
-        class="ml-auto h-20 opacity-5"
+        class="ml-auto hidden h-20 opacity-5 md:block"
         alt=""
       />
     </div>
@@ -39,6 +43,7 @@ status.value = statusLabel[props.status];
       <div class="flex-1">
         <div class="flex justify-center">
           <div
+            class="text-xs md:text-base"
             :class="{
               'font-bold text-brand-blue': status >= 2,
               'text-slate-600': status < 2,
@@ -46,12 +51,15 @@ status.value = statusLabel[props.status];
           >
             In Transit
           </div>
-          <CheckIcon v-if="status >= 2" class="ml-2 w-5 text-brand-blue" />
+          <CheckIcon
+            v-if="status >= 2"
+            class="ml-2 hidden w-5 text-brand-blue md:block"
+          />
         </div>
       </div>
       <img
         src="@/assets/img/right-chevron.webp"
-        class="ml-auto h-20 opacity-5"
+        class="ml-auto hidden h-20 opacity-5 md:block"
         alt=""
       />
     </div>
@@ -59,6 +67,7 @@ status.value = statusLabel[props.status];
       <div class="flex-1">
         <div class="flex justify-center">
           <div
+            class="text-xs md:text-base"
             :class="{
               'font-bold text-brand-blue': status >= 3,
               'text-slate-600': status < 3,
@@ -66,12 +75,15 @@ status.value = statusLabel[props.status];
           >
             On the last Connection
           </div>
-          <CheckIcon v-if="status >= 3" class="ml-2 w-5 text-brand-blue" />
+          <CheckIcon
+            v-if="status >= 3"
+            class="ml-2 hidden w-5 text-brand-blue md:block"
+          />
         </div>
       </div>
       <img
         src="@/assets/img/right-chevron.webp"
-        class="ml-auto h-20 opacity-5"
+        class="ml-auto hidden h-20 opacity-5 md:block"
         alt=""
       />
     </div>
@@ -79,6 +91,7 @@ status.value = statusLabel[props.status];
       <div class="flex-1">
         <div class="flex justify-center">
           <div
+            class="text-xs md:text-base"
             :class="{
               'font-bold text-brand-blue': status >= 4,
               'text-slate-600': status < 4,
@@ -86,7 +99,10 @@ status.value = statusLabel[props.status];
           >
             Arrived
           </div>
-          <CheckIcon v-if="status >= 4" class="ml-2 w-5 text-brand-blue" />
+          <CheckIcon
+            v-if="status >= 4"
+            class="ml-2 hidden w-5 text-brand-blue md:block"
+          />
         </div>
       </div>
     </div>
