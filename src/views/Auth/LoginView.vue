@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useAuthStore } from "@/stores/auth";
 import { defineRule, ErrorMessage, Field, Form } from "vee-validate";
 import { email, required } from "@vee-validate/rules";
@@ -13,13 +13,13 @@ const isSubmitting = ref(false);
 defineRule("required", required);
 defineRule("email", email);
 
-const handleSubmit = async (values) => {
+const handleSubmit = async (values: any) => {
   isSubmitting.value = true;
   try {
     await auth.login(values);
     await router.push({ name: "home" });
     isSubmitting.value = false;
-  } catch (err) {
+  } catch (err: any) {
     isSubmitting.value = false;
     if (err.response?.status === 422) {
       form.value.setErrors(err.response.data.errors);

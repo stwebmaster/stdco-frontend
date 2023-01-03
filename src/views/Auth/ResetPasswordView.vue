@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { defineRule, ErrorMessage, Field, Form } from "vee-validate";
 import { required } from "@vee-validate/rules";
 import { ref } from "vue";

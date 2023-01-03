@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { defineRule, ErrorMessage, Field, Form } from "vee-validate";
 import { required } from "@vee-validate/rules";
 import axios from "axios";
@@ -32,7 +32,7 @@ const handleSubmit = async (values) => {
     <div class="mx-auto max-w-screen-sm rounded bg-slate-100 shadow-lg">
       <div class="mb-0 rounded-t bg-white px-6 py-6">
         <div>
-          <h6 class="text-slate-700 text-xl font-bold">Change Password</h6>
+          <h6 class="text-xl font-bold text-slate-700">Change Password</h6>
         </div>
       </div>
 
@@ -52,7 +52,7 @@ const handleSubmit = async (values) => {
               name="current_password"
               type="password"
               rules="required"
-              class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              class="w-full rounded border-0 bg-white px-3 py-3 text-sm text-slate-600 placeholder-slate-300 shadow transition-all duration-150 ease-linear focus:outline-none focus:ring"
               placeholder="current password"
               autocomplete="current-password"
             />
@@ -76,7 +76,7 @@ const handleSubmit = async (values) => {
               rules="required"
               placeholder="new password"
               autocomplete="new-password"
-              class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              class="w-full rounded border-0 bg-white px-3 py-3 text-sm text-slate-600 placeholder-slate-300 shadow transition-all duration-150 ease-linear focus:outline-none focus:ring"
             />
             <ErrorMessage class="text-sm text-red-500" name="password" />
           </div>
@@ -95,7 +95,7 @@ const handleSubmit = async (values) => {
               rules="required"
               placeholder="password confirmation"
               autocomplete="new-password"
-              class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              class="w-full rounded border-0 bg-white px-3 py-3 text-sm text-slate-600 placeholder-slate-300 shadow transition-all duration-150 ease-linear focus:outline-none focus:ring"
             />
             <ErrorMessage
               class="text-sm text-red-500"

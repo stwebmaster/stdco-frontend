@@ -1,6 +1,7 @@
 import { createApp } from "vue";
 import { createPinia } from "pinia";
 import axios from "axios";
+import { pageTitle } from "vue-page-title";
 
 import Vue3Lottie from "vue3-lottie";
 import "vue3-lottie/dist/style.css";
@@ -25,6 +26,7 @@ const app = createApp(App);
 app.use(createPinia());
 app.use(router);
 app.use(Vue3Lottie);
+app.use(pageTitle({ router, suffix: "- stdco", mixin: true }));
 app.use(Toast, {
   newestOnTop: true,
   transition: "Vue-Toastification__fade",

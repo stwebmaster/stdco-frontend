@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { defineRule, ErrorMessage, Field, Form } from "vee-validate";
 import { required } from "@vee-validate/rules";
 import axios from "axios";
@@ -12,12 +12,12 @@ const auth = useAuthStore();
 
 defineRule("required", required);
 
-const handleSubmit = async (values) => {
+const handleSubmit = async (values: Object) => {
   try {
     await axios.put("user/profile-information", values);
     auth.getUserInfo();
     toast.success("Profile Updated.");
-  } catch (err) {
+  } catch (err: any) {
     if (err.response?.status === 422) {
       form.value.setErrors(err.response.data.errors);
     } else {
@@ -38,7 +38,7 @@ const handleSubmit = async (values) => {
 
       <div class="p-6">
         <Form ref="form" @submit="handleSubmit">
-          <input type="hidden" :value="auth.user.email" name="username" />
+          <input type="hidden" :value="auth?.user?.email" name="username" />
 
           <div class="relative mb-5 w-full">
             <label
@@ -53,9 +53,9 @@ const handleSubmit = async (values) => {
               type="text"
               rules="required"
               placeholder="Full Name"
-              :value="auth.user.name"
+              :value="auth?.user?.name"
               disabled
-              class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              class="w-full rounded border-0 bg-white px-3 py-3 text-sm text-slate-600 placeholder-slate-300 shadow transition-all duration-150 ease-linear focus:outline-none focus:ring"
             />
             <ErrorMessage class="text-sm text-red-500" name="name" />
           </div>
@@ -73,9 +73,9 @@ const handleSubmit = async (values) => {
               type="email"
               rules="required"
               placeholder="Email"
-              :value="auth.user.email"
+              :value="auth?.user?.email"
               autocomplete="username"
-              class="border-0 px-3 py-3 placeholder-slate-300 text-slate-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              class="w-full rounded border-0 bg-white px-3 py-3 text-sm text-slate-600 placeholder-slate-300 shadow transition-all duration-150 ease-linear focus:outline-none focus:ring"
             />
             <ErrorMessage class="text-sm text-red-500" name="email" />
           </div>

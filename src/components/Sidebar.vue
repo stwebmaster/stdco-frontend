@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import {
   ArrowLeftOnRectangleIcon,
   HomeIcon,
@@ -30,15 +30,15 @@ const logout = async () => {
       <div
         class="absolute top-0 left-0 right-0 z-40 hidden h-auto flex-1 items-center overflow-y-auto overflow-x-hidden rounded shadow md:relative md:mt-4 md:flex md:flex-col md:items-stretch md:opacity-100 md:shadow-none"
       >
-        <img src="@/assets/logo.svg" class="w-24 mx-auto" />
+        <img src="@/assets/logo.svg" class="mx-auto w-24" />
 
         <div
-          class="mt-4 flex items-center text-sm uppercase text-slate-500 border p-1 rounded-lg"
+          class="mt-4 flex items-center rounded-lg border p-1 text-sm uppercase text-slate-500"
         >
           <span class="mr-2 rounded-full bg-slate-100 p-3">
             <UserIcon class="h-5 w-5" />
           </span>
-          {{ auth.user.name }}
+          {{ auth?.user?.name }}
         </div>
 
         <hr class="my-4 md:min-w-full" />

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import ContainerShip from "@/assets/Container_Ship_Final_Comp.json";
 import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";

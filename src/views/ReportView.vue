@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import ReportStatus from "@/components/ReportStatus.vue";
 import { useRoute, useRouter } from "vue-router";
 import { onMounted, ref, watch } from "vue";
@@ -97,7 +97,7 @@ watch(
     </div>
   </div>
   <div class="max-w-screen-2xl mx-auto pb-5 -mt-32">
-    <Loading v-if="loading" />
+    <Loading v-if="loading" class="mt-48" />
     <div v-else-if="report">
       <div class="bg-white rounded-md my-5 shadow">
         <ReportStatus :status="report.VesselStatus" />

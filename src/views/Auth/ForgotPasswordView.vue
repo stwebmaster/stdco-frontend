@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useAuthStore } from "@/stores/auth";
 import { ArrowLeftIcon } from "@heroicons/vue/24/solid";
 import { defineRule, ErrorMessage, Field, Form } from "vee-validate";
