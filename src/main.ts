@@ -26,7 +26,7 @@ const app = createApp(App);
 app.use(createPinia());
 app.use(router);
 app.use(Vue3Lottie);
-app.use(pageTitle({ router, suffix: "- stdco", mixin: true }));
+app.use(pageTitle({ router, suffix: "- STD Co.", mixin: true }));
 app.use(Toast, {
   newestOnTop: true,
   transition: "Vue-Toastification__fade",
