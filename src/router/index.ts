@@ -6,6 +6,7 @@ import ChangePasswordView from "@/views/Profile/ChangePasswordView.vue";
 import UpdateProfileView from "@/views/Profile/UpdateProfileView.vue";
 import LoginView from "@/views/Auth/LoginView.vue";
 import AuthLayout from "@/layouts/AuthLayout.vue";
+import { useMenuStore } from "@/stores/menu";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -73,5 +74,10 @@ const router = createRouter({
 });
 
 router.beforeEach(authMiddleware);
+
+router.afterEach(() => {
+  const menu = useMenuStore();
+  menu.show = false;
+});
 
 export default router;

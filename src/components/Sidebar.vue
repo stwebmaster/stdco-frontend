@@ -10,21 +10,18 @@ import {
 import { useAuthStore } from "@/stores/auth";
 import { useRouter } from "vue-router";
 import { ref } from "vue";
+import { useMenuStore } from "@/stores/menu";
 
 const auth = useAuthStore();
+const menu = useMenuStore();
 const router = useRouter();
-const showMenu = ref(false);
 
 const logout = async () => {
   const result = confirm("Are you sure you wanrt to log out?");
   if (result) {
     await auth.logout();
-    router.push({ name: "login" });
+    await router.push({ name: "login" });
   }
-};
-
-const toggleMenu = () => {
-  showMenu.value = !showMenu.value;
 };
 </script>
 
@@ -33,25 +30,31 @@ const toggleMenu = () => {
     class="relative z-10 flex flex-wrap items-center justify-between bg-white py-4 px-6 shadow-xl md:fixed md:left-0 md:top-0 md:bottom-0 md:block md:w-64 md:flex-row md:flex-nowrap md:overflow-hidden md:overflow-y-auto"
   >
     <div
+      v-if="menu.show"
+      @click="menu.show = false"
+      class="fixed inset-0 bg-black opacity-50 md:hidden"
+    ></div>
+
+    <div
       class="mx-auto flex w-full flex-wrap items-center justify-between px-0 md:min-h-full md:flex-col md:flex-nowrap md:items-stretch"
     >
-      <button class="rounded-md border p-1 md:hidden" @click="showMenu = true">
+      <button class="rounded-md border p-1 md:hidden" @click="menu.show = true">
         <Bars3Icon class="w-8 text-slate-600" />
       </button>
       <div
-        :class="{ block: showMenu, hidden: !showMenu }"
+        :class="{ block: menu.show, hidden: !menu.show }"
         class="absolute top-0 left-0 right-0 z-40 mx-2 h-auto flex-1 items-center overflow-y-auto overflow-x-hidden rounded bg-white p-5 shadow md:relative md:mx-0 md:mt-4 md:flex md:flex-col md:items-stretch md:p-0 md:opacity-100 md:shadow-none"
       >
         <div class="md:hidden">
           <button
             class="rounded-md border p-1 md:hidden"
-            @click="showMenu = false"
+            @click="menu.show = false"
           >
             <XMarkIcon class="w-8 text-slate-600" />
           </button>
         </div>
 
-        <img src="@/assets/logo.svg" class="mx-auto w-24" />
+        <img src="@/assets/logo.svg" class="mx-auto w-24" alt="" />
 
         <div
           class="mt-4 flex items-center rounded-lg border p-1 text-sm uppercase text-slate-500"
@@ -115,4 +118,8 @@ const toggleMenu = () => {
   </nav>
 </template>
 
-<style scoped></style>
+<style scoped>
+.router-link-active.router-link-exact-active {
+  @apply text-brand-blue;
+}
+</style>
