@@ -5,8 +5,8 @@ export const useAuthStore = defineStore("auth", {
   state() {
     return {
       isLoggedIn: false,
-      user: null,
-      redirectRoute: null,
+      user: null as User | null,
+      redirectRoute: null as object | null,
     };
   },
 
@@ -44,10 +44,10 @@ export const useAuthStore = defineStore("auth", {
       }
     },
 
-    async forgotPassword(email: string) {
+    async forgotPassword(params: object) {
       try {
         await this.csrf();
-        return await axios.post("/forgot-password", email);
+        return await axios.post("/forgot-password", params);
       } catch (error: any) {
         console.log("Error at forgot password: ", error.message);
         throw error;
@@ -67,3 +67,9 @@ export const useAuthStore = defineStore("auth", {
     },
   },
 });
+
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+}

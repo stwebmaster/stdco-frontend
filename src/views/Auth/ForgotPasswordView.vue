@@ -13,13 +13,13 @@ const isSubmitting = ref(false);
 defineRule("required", required);
 defineRule("email", email);
 
-const handleSubmit = async (values) => {
+const handleSubmit = async (values: object) => {
   isSubmitting.value = true;
   try {
     await auth.forgotPassword(values);
     sentSuccessfully.value = true;
     isSubmitting.value = false;
-  } catch (err) {
+  } catch (err: any) {
     isSubmitting.value = false;
     if (err.response?.status === 422) {
       form.value.setErrors(err.response.data.errors);

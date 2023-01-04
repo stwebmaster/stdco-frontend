@@ -10,13 +10,14 @@ const status = ref(1);
 // On the last Connection = 3
 // Arrived = 4
 
-const statusLabel = {
+const statusLabel: object = {
   "Waiting for Plan": 1,
   "In Transit": 2,
   "On the last Connection": 3,
   Arrived: 4,
 };
 
+// @ts-ignore
 status.value = statusLabel[props.status];
 </script>
 
@@ -26,7 +27,7 @@ status.value = statusLabel[props.status];
       <div class="flex-1">
         <div class="flex justify-center">
           <div
-            class="text-center text-xs md:text-base font-bold text-brand-blue md:text-left"
+            class="text-center text-xs font-bold text-brand-blue md:text-left md:text-base"
           >
             Waiting for Plan
           </div>

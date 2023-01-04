@@ -22,13 +22,10 @@ const handleSubmit = async (values: any) => {
     isSubmitting.value = false;
 
     if (auth.redirectRoute) {
-      router.push({
-        name: auth.redirectRoute?.name,
-        params: auth.redirectRoute?.params,
-      });
+      await router.push(auth.redirectRoute);
       auth.redirectRoute = null;
     } else {
-      router.push({ name: "home" });
+      await router.push({ name: "home" });
     }
   } catch (err: any) {
     isSubmitting.value = false;

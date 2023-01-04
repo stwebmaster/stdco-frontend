@@ -12,7 +12,7 @@ const isSubmitting = ref(false);
 
 defineRule("required", required);
 
-const handleSubmit = async (values) => {
+const handleSubmit = async (values: object) => {
   isSubmitting.value = true;
 
   try {
@@ -21,7 +21,7 @@ const handleSubmit = async (values) => {
     await router.push({ name: "login" });
 
     isSubmitting.value = false;
-  } catch (err) {
+  } catch (err: any) {
     isSubmitting.value = false;
 
     if (err.response?.status === 422) {

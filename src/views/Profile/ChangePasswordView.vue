@@ -12,12 +12,12 @@ const auth = useAuthStore();
 
 defineRule("required", required);
 
-const handleSubmit = async (values) => {
+const handleSubmit = async (values: object) => {
   try {
     await axios.put("/user/password", values);
     form.value.resetForm();
     toast.success("Password changed successfully.");
-  } catch (err) {
+  } catch (err: any) {
     if (err.response?.status === 422) {
       form.value.setErrors(err.response.data.errors);
     } else {
@@ -38,7 +38,7 @@ const handleSubmit = async (values) => {
 
       <div class="p-6">
         <Form ref="form" @submit="handleSubmit">
-          <input type="hidden" :value="auth.user.email" name="username" />
+          <input type="hidden" :value="auth?.user?.email" name="username" />
 
           <div class="relative mb-5 w-full">
             <label
