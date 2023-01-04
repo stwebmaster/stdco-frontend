@@ -5,13 +5,13 @@ export default async (to: any, from: any, next: any) => {
 
   if (!auth.isLoggedIn) await auth.getUserInfo();
 
-  let exceptionalRoutes = [
+  const exceptionalRoutes = [
     "login",
     "register",
     "forgot-password",
     "reset-password",
   ];
-  let isGoingExceptionalRoutes = exceptionalRoutes.includes(to.name);
+  const isGoingExceptionalRoutes: boolean = exceptionalRoutes.includes(to.name);
 
   /**
    * IF THE USER IS NOT LOGGED IN
@@ -21,6 +21,7 @@ export default async (to: any, from: any, next: any) => {
       next(); // The user is not logged in but it's going to exceptional routes ? fine
       return;
     } else {
+      auth.redirectRoute = to;
       next({ name: "login" });
       return;
     } // other routes than exceptional paths => /login

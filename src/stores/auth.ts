@@ -6,6 +6,7 @@ export const useAuthStore = defineStore("auth", {
     return {
       isLoggedIn: false,
       user: null,
+      redirectRoute: null,
     };
   },
 
@@ -16,7 +17,7 @@ export const useAuthStore = defineStore("auth", {
 
     async getUserInfo() {
       try {
-        let { data: userInfo } = await axios.get("/api/user");
+        const { data: userInfo } = await axios.get("/api/user");
         this.user = userInfo;
         this.isLoggedIn = true;
       } catch (e) {

@@ -4,9 +4,11 @@ import { defineRule, ErrorMessage, Field, Form } from "vee-validate";
 import { email, required } from "@vee-validate/rules";
 import { ref } from "vue";
 import { useRouter } from "vue-router";
+import { useToast } from "vue-toastification";
 
 let auth = useAuthStore();
 const router = useRouter();
+const toast = useToast();
 const form = ref();
 const isSubmitting = ref(false);
 
@@ -17,14 +19,23 @@ const handleSubmit = async (values: any) => {
   isSubmitting.value = true;
   try {
     await auth.login(values);
-    await router.push({ name: "home" });
     isSubmitting.value = false;
+
+    if (auth.redirectRoute) {
+      router.push({
+        name: auth.redirectRoute?.name,
+        params: auth.redirectRoute?.params,
+      });
+      auth.redirectRoute = null;
+    } else {
+      router.push({ name: "home" });
+    }
   } catch (err: any) {
     isSubmitting.value = false;
     if (err.response?.status === 422) {
       form.value.setErrors(err.response.data.errors);
     } else {
-      alert(err.response?.data?.message);
+      toast.error(err.response?.data?.message);
     }
   }
 };
