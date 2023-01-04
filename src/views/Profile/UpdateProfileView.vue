@@ -28,7 +28,7 @@ const handleSubmit = async (values: Object) => {
 </script>
 
 <template>
-  <div class="pt-24 pb-5">
+  <div class="pt-0 pb-5 md:pt-24">
     <div class="mx-auto max-w-screen-sm rounded bg-slate-100 shadow-lg">
       <div class="mb-0 rounded-t bg-white px-6 py-6">
         <div>
