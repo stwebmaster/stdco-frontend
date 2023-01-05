@@ -4,10 +4,12 @@ import { required } from "@vee-validate/rules";
 import { ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
+import { useToast } from "vue-toastification";
 
 const router = useRouter();
 const route = useRoute();
 const form = ref();
+const toast = useToast();
 const isSubmitting = ref(false);
 
 defineRule("required", required);
@@ -19,6 +21,8 @@ const handleSubmit = async (values: object) => {
     const params = { token: route.query.token, ...values };
     await axios.post("/reset-password", params);
     await router.push({ name: "login" });
+
+    toast.success("Password updated.");
 
     isSubmitting.value = false;
   } catch (err: any) {
