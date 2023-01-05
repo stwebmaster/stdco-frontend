@@ -195,7 +195,7 @@ watch(
                   <tr>
                     <th class="p-1 text-[#6d6e71]">Total Containers:</th>
                     <td class="p-1 text-sm text-[#6d6e71]">
-                      10 x 40' Hi-Cube Container
+                      {{ report.containers.length }} Container
                     </td>
                   </tr>
                 </tbody>

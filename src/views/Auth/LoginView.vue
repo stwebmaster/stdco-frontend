@@ -92,7 +92,7 @@ const handleSubmit = async (values: any) => {
         <label class="inline-flex cursor-pointer items-center">
           <Field
             name="remember_me"
-            :value="false"
+            :value="true"
             type="checkbox"
             class="form-checkbox ml-1 h-5 w-5 rounded border-0 bg-slate-200 text-slate-700 transition-all duration-150 ease-linear"
           />

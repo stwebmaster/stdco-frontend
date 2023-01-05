@@ -32,10 +32,14 @@ export const useAuthStore = defineStore("auth", {
       this.isLoggedIn = false;
     },
 
-    async login({ email, password }: any) {
+    async login({ email, password, remember_me }: any) {
       try {
         await this.csrf();
-        const response = await axios.post("/login", { email, password });
+        const response = await axios.post("/login", {
+          email,
+          password,
+          remember_me,
+        });
         await this.getUserInfo();
         return response;
       } catch (error: any) {
